@@ -1,5 +1,6 @@
-import React, { useState } from 'react';
+import React, { useState, useCallback, useEffect } from 'react';
 import { createPortal } from 'react-dom';
+import { Assign } from 'utility-types';
 import styles from './styles.module.less';
 
 function Portal({
@@ -18,11 +19,12 @@ export default function Modal({
   visible,
   children,
   onClose,
-}: {
-  visible?: boolean;
-  children: React.ReactNode;
-  onClose: () => void;
-}) {
+}: Assign<
+  {
+    children: React.ReactNode;
+  },
+  ReturnType<typeof useModal>
+>) {
   return !visible ? null : (
     <Portal>
       <div className={styles.mask}></div>
@@ -40,9 +42,27 @@ export default function Modal({
 
 export function useModal() {
   const [visible, setVisible] = useState(false);
-  const onToggle = () => {
+
+  const onToggle = useCallback(() => {
     setVisible(!visible);
-  };
+  }, [visible]);
+
+  const handleEscape = useCallback(
+    (event: KeyboardEvent) => {
+      if (event.code === 'Escape') onToggle();
+    },
+    [onToggle],
+  );
+
+  useEffect(() => {
+    if (visible) {
+      document.addEventListener('keydown', handleEscape, false);
+    }
+    return () => {
+      document.removeEventListener('keydown', handleEscape, false);
+    };
+  }, [visible]);
+
   return {
     visible,
     onClose: onToggle,
