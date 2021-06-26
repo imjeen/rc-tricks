@@ -1,6 +1,8 @@
 # ContentEditor
 
-## ✅ 可编辑文本的组件 (Basic)
+✅ 可编辑文本的组件
+
+## Basic
 
 ```tsx
 import React, { useState } from 'react';
@@ -23,7 +25,7 @@ export default function App() {
 }
 ```
 
-## ✅ 可编辑文本的组件 (Advanced)
+## Advanced
 
 ```tsx
 import React, { useState } from 'react';
@@ -39,7 +41,7 @@ export default function App() {
       <AdvancedEditor
         value={text}
         onChange={setText}
-        tips={<div className="tips"> Hey ✌️</div>}
+        tooltips={<div className="tips"> Hey ✌️</div>}
       />
 
       <p>
@@ -62,7 +64,7 @@ export default function App() {
   );
   return (
     <>
-      <h5>模拟光标 (待完善) </h5>
+      <h5>模拟光标 </h5>
       <style>{`
         .demo-caret{font-size: 30px;}
         .demo-caret [contentEditable]{caret-color:transparent;}
@@ -73,7 +75,7 @@ export default function App() {
           key="caret"
           value={text}
           onChange={setText}
-          tips={<div className="caret-blink"></div>}
+          tooltips={<div className="caret-blink"></div>}
         />
       </div>
       <p>
