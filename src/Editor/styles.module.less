@@ -1,0 +1,85 @@
+.editorWrap {
+  position: relative;
+  border: 1px solid #ddd;
+  border-radius: 6px;
+  .placeholder {
+    position: absolute;
+    top: 0;
+    left: 0;
+    padding: 20px;
+    font-style: italic;
+    color: #ccc;
+  }
+  .editor {
+    position: relative;
+    padding: 20px;
+  }
+}
+
+.tooltip {
+  position: absolute;
+  top: 0;
+  left: 0;
+  transform: translate(-50%, -100%);
+  // display: none;
+  z-index: 100;
+}
+
+:global {
+  .tips {
+    position: relative;
+    top: -6px;
+    width: 80px;
+    background: black;
+    color: white;
+    border-radius: 8px;
+    padding: 5px;
+    font-size: 20px;
+    text-align: center;
+    text-transform: uppercase;
+    font-weight: 700;
+
+    &::after {
+      content: ' ';
+      position: absolute;
+      top: 100%;
+      left: 50%;
+      margin-left: -5px;
+      border-width: 5px;
+      border-style: solid;
+      border-color: black transparent transparent transparent;
+    }
+  }
+}
+
+// 模拟光标
+:global {
+  .caret-blink {
+    position: relative;
+    //top: -4px;
+    font-weight: 200;
+    transform-origin: center;
+    transform: translate(0%, 100%) scaleY(1.12);
+    display: inline-block;
+
+    animation: 1s step-end infinite;
+    & :local {
+      animation-name: blink;
+    }
+
+    &::after {
+      content: '|';
+      display: block;
+    }
+  }
+}
+
+@keyframes blink {
+  from,
+  to {
+    color: transparent;
+  }
+  50% {
+    color: currentColor;
+  }
+}
