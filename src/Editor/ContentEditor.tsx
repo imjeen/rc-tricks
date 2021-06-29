@@ -76,9 +76,37 @@ export function AdvancedEditor({
   const [content, setContent] = useState(value); // 编辑的实时文本内容
   const contentRef = useRef(value); // 正在编辑内容，重新渲染时不会被改变
 
+  // paste 事件
+  useEffect(() => {
+    const target = nodeRef.current;
+    if (!target) return;
+
+    function handleParse(event: ClipboardEvent) {
+      event.preventDefault();
+
+      const paste = event.clipboardData?.getData('text/plain'); // 格式化内容，纯文本，不支持emoji
+      // 无粘贴的内容
+      if (!paste) return;
+      // 支持 ctr+z 撤销
+      document.execCommand('insertText', false, paste);
+    }
+
+    target.addEventListener('paste', handleParse);
+    return () => {
+      target.removeEventListener('paste', handleParse);
+    };
+  }, [nodeRef]);
+
   // 点击元素之外，隐藏 tooltips，之内时更新其实时坐标
   useOutside(nodeRef.current, (outside) => {
-    !outside && setPosition(getCaretCoordinates());
+    if (!outside) {
+      // 延迟：修复从选择内容到点击的过程
+      const timer = window.setTimeout(() => {
+        setPosition(getCaretCoordinates());
+        clearTimeout(timer);
+      }, 0);
+    }
+    // !outside && setPosition(getCaretCoordinates());
     setTooltipVisible(!outside);
   });
 
@@ -130,6 +158,7 @@ export function AdvancedEditor({
       </div>
 
       {(isDebug || tooltipVisible) &&
+        window.getSelection?.()?.isCollapsed && // 未选择范围
         tooltips &&
         createPortal(
           <>
