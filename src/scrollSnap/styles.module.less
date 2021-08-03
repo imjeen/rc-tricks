@@ -1,0 +1,103 @@
+.scrollSnapX {
+  overflow-x: auto;
+  overflow-y: hidden;
+  overflow: auto hidden;
+  overscroll-behavior-x: contain;
+  scroll-snap-type: x mandatory;
+
+  @media (prefers-reduced-motion: no-preference) {
+    scroll-behavior: smooth;
+  }
+
+  @media (hover: none) {
+    scrollbar-width: none;
+
+    &::-webkit-scrollbar {
+      width: 0;
+      height: 0;
+    }
+  }
+}
+
+.header {
+  flex-shrink: 0;
+  min-block-size: fit-content;
+
+  display: flex;
+  flex-direction: column;
+  overflow: hidden;
+  position: relative;
+  outline-color: #ff1492;
+  outline-offset: -5px;
+  .nav {
+    display: flex;
+    a {
+      scroll-snap-align: start;
+      display: inline-flex;
+      align-items: center;
+      white-space: nowrap;
+      font-size: 20px;
+      color: #6b6166;
+      background-color: rgba(0, 0, 0, 0);
+      font-weight: 700;
+      text-decoration: none;
+      padding: 10px 15px;
+      &:hover {
+        background-color: rgba(255, 20, 146, 0.05);
+      }
+      &:focus {
+        outline-offset: -0.5ch;
+      }
+    }
+  }
+
+  .indicator {
+    inline-size: 0;
+    block-size: 2px;
+    border-radius: 2px;
+    background: #ff1492;
+  }
+}
+
+.horizontalSnap {
+  margin: 0 auto;
+  display: grid;
+  grid-auto-flow: column;
+  gap: 1rem;
+  height: calc(180px + 1rem);
+  padding: 1rem;
+  width: 480px;
+  overflow-y: auto;
+  overscroll-behavior-x: contain;
+  scroll-snap-type: x mandatory;
+  > a {
+    scroll-snap-align: center;
+  }
+  img {
+    width: 180px;
+    max-width: none;
+    object-fit: contain;
+    border-radius: 1rem;
+  }
+}
+
+.verticalSnap {
+  margin: 0 auto;
+  display: grid;
+  grid-auto-flow: row;
+  gap: 1rem;
+  width: calc(180px + 1rem);
+  padding: 1rem;
+  height: 480px;
+  overflow-y: auto;
+  overscroll-behavior-y: contain;
+  scroll-snap-type: y mandatory;
+  > a {
+    scroll-snap-align: center;
+  }
+  img {
+    width: 180px;
+    object-fit: contain;
+    border-radius: 1rem;
+  }
+}
