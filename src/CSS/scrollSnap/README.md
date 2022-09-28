@@ -15,7 +15,6 @@ export default function App() {
 
 ### horizontal-scroll-snap
 
-
 ```tsx
 import React from 'react';
 import CssHorizontalSnap from './CssHorizontalSnap';
@@ -28,7 +27,6 @@ export default function App() {
   );
 }
 ```
-
 
 ### vertical-scroll-snap
 

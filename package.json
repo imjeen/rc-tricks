@@ -28,16 +28,16 @@
     ]
   },
   "dependencies": {
-    "react": "^17.0.2",
-    "react-dom": "^17.0.2",
+    "react": "^18.2.0",
+    "react-dom": "^18.2.0",
     "utility-types": "^3.10.0"
   },
   "devDependencies": {
-    "@umijs/test": "^3.4.22",
+    "@umijs/test": "^4.0.22",
     "dumi": "^1.1.18",
     "father-build": "^1.17.2",
-    "gh-pages": "^3.2.0",
-    "lint-staged": "^11.0.0",
+    "gh-pages": "^4.0.0",
+    "lint-staged": "^13.0.3",
     "prettier": "^2.2.1",
     "yorkie": "^2.0.0"
   }

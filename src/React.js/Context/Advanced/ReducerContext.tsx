@@ -18,8 +18,9 @@ function reducer(state = 0, action: CounterActionTypes) {
 // 值 context
 const CounterContext = createContext<number | undefined>(undefined);
 // 操作 context
-const CounterDispatchContext =
-  createContext<undefined | React.Dispatch<CounterActionTypes>>(undefined);
+const CounterDispatchContext = createContext<
+  undefined | React.Dispatch<CounterActionTypes>
+>(undefined);
 
 // provider
 export default function CounterProvider({

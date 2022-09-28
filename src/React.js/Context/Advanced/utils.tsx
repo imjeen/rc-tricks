@@ -8,10 +8,9 @@ import React, { createContext, useContext, useState, useReducer } from 'react';
  */
 export function CreateContext<T>(initialValue: T) {
   const stateContext = createContext<undefined | T>(undefined); // 读
-  const dispatchContext =
-    createContext<undefined | React.Dispatch<React.SetStateAction<T>>>(
-      undefined,
-    ); // 写
+  const dispatchContext = createContext<
+    undefined | React.Dispatch<React.SetStateAction<T>>
+  >(undefined); // 写
 
   // 组合
   function ContextProvider({ children }: { children: React.ReactNode }) {
@@ -61,8 +60,9 @@ export function CreateReducerContext<StateType, ActionType>(
   initialValue: StateType,
 ) {
   const stateContext = createContext<undefined | StateType>(undefined); // 读
-  const dispatchContext =
-    createContext<undefined | React.Dispatch<ActionType>>(undefined); // 写
+  const dispatchContext = createContext<undefined | React.Dispatch<ActionType>>(
+    undefined,
+  ); // 写
 
   // 组合
   function ContextProvider({ children }: { children: React.ReactNode }) {

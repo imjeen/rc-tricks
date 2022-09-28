@@ -13,7 +13,9 @@ export default function DemoModal() {
   const config = useModal();
   return (
     <>
-      <button onClick={() => config.onToggle()}>Click me to open a Modal!</button>
+      <button onClick={() => config.onToggle()}>
+        Click me to open a Modal!
+      </button>
       <Modal {...config}>Hi, I'm a Modal!</Modal>
     </>
   );

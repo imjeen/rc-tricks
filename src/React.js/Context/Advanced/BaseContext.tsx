@@ -3,10 +3,9 @@ import React, { createContext, useContext, useState } from 'react';
 // 值 context
 const CounterContext = createContext<number | undefined>(undefined);
 // 操作 context
-const CounterDispatchContext =
-  createContext<undefined | React.Dispatch<React.SetStateAction<number>>>(
-    undefined,
-  );
+const CounterDispatchContext = createContext<
+  undefined | React.Dispatch<React.SetStateAction<number>>
+>(undefined);
 
 // provider
 export default function CounterProvider({
