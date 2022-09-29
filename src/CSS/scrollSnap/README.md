@@ -1,4 +1,4 @@
-# scroll snap
+# ScrollSnap
 
 ```tsx
 import React, { useState, useRef, useEffect } from 'react';

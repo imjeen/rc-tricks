@@ -1,9 +1,17 @@
 ---
 nav:
-  title: Getting Started
+  title: 开始
   order: 1
 ---
 
-# Getting Started
+# 架初始化
 
-Balabala...
+由 [dumi](https://d.umijs.org/) 生成的文档。
+
+```bash
+$ mkdir rc-tricks && cd rc-tricks
+
+$ npx @umijs/create-dumi-app
+# or
+$ yarn create @umijs/dumi-app
+```

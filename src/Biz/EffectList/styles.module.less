@@ -1,0 +1,94 @@
+.materialList {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+}
+.material {
+  border-radius: 16px;
+  width: 180px;
+  height: 300px;
+  position: relative;
+  overflow: hidden;
+  background-color: #f7f8f9;
+  margin-bottom: 10px;
+  margin-right: 10px;
+
+  .diffIcon {
+    position: absolute;
+    background: rgba(16, 16, 16, 0.3);
+    backdrop-filter: blur(24px);
+    border-radius: 32px;
+    overflow: hidden;
+    width: 32px;
+    height: 32px;
+    right: 10px;
+    bottom: 10px;
+    i {
+      position: absolute;
+      top: 50%;
+      left: 50%;
+      transform: translate(-50%, -50%);
+      width: 16px;
+      height: 16px;
+      background-image: url('./images/icon-diff.png');
+      background-size: contain;
+    }
+  }
+
+  .origin,
+  .preview,
+  .layer,
+  .inner,
+  .image {
+    overflow: hidden;
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-repeat: no-repeat;
+    background-size: cover;
+    background-position: 50%;
+  }
+
+  .layer {
+    .inner {
+      animation: recipe-right ease-in-out infinite;
+      transform: translateX(100%);
+      &::after {
+        content: ' ';
+        width: 2px;
+        height: 100%;
+        left: 0;
+        top: 0;
+        background-color: #fff;
+        position: absolute;
+      }
+    }
+    .image {
+      animation: recipe-left ease-in-out infinite;
+    }
+  }
+}
+
+@keyframes recipe-right {
+  0%,
+  25%,
+  100% {
+    transform: translateX(100%);
+  }
+  12% {
+    transform: translateX(0);
+  }
+}
+
+@keyframes recipe-left {
+  0%,
+  25%,
+  100% {
+    transform: translateX(-100%);
+  }
+  12% {
+    transform: translateX(0);
+  }
+}

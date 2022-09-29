@@ -1,0 +1,149 @@
+.button3D {
+  display: block;
+  position: relative;
+  background: transparent;
+  border: none;
+  outline: none;
+  margin: 0 auto;
+  font-size: 32px;
+  font-weight: 400;
+  min-width: 320px;
+  height: 71px;
+  max-width: 100%;
+  margin-bottom: 13px;
+
+  &.disabled {
+    pointer-events: none;
+    .topLayer {
+      background: #b3b2b2;
+    }
+    .bottomLayer {
+      background: #b3b2b2;
+    }
+
+    &.middle {
+      .topLayer {
+        background-image: linear-gradient(to top, #b3b3b3 0%, #ffffff 100%);
+      }
+    }
+  }
+  &.active:not(.disabled),
+  &:active:not(.disabled) {
+    &.normal .topLayer {
+      transform: translateY(12px);
+    }
+    &.large .topLayer {
+      transform: translateY(20px);
+    }
+    &.small .topLayer {
+      transform: translateY(8px);
+    }
+  }
+
+  // 动画仅限 large 按钮
+  &.large {
+    .topLayer,
+    .bottomLayer {
+      animation-duration: 0.45s;
+      animation-timing-function: linear;
+      animation-delay: 0s;
+      animation-iteration-count: infinite;
+      animation-direction: alternate;
+      animation-fill-mode: forwards;
+      animation-play-state: paused;
+    }
+    .topLayer {
+      animation-name: largeTopTapping;
+    }
+    .bottomLayer {
+      animation-name: largeBottomTapping;
+    }
+  }
+
+  &.animation:not(.disabled) {
+    &.large {
+      .topLayer,
+      .bottomLayer {
+        animation-play-state: running;
+      }
+    }
+  }
+
+  .bottomLayer {
+    position: absolute;
+    left: 0;
+    top: 12px;
+    display: block;
+    width: 100%;
+    height: 100%;
+    border-radius: 35px;
+    border: 1px solid #000000;
+    background-color: #ff773e;
+  }
+  .topLayer {
+    position: absolute;
+    left: 0;
+    top: 0;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+
+    width: 100%;
+    height: 100%;
+    border-radius: 35px;
+    border: 1px solid #000000;
+    background-image: linear-gradient(-51deg, #ffdf5d 0%, #ffeb96 100%);
+  }
+
+  &.warn {
+    .topLayer {
+      background-image: linear-gradient(to top, #ff6400 0%, #ff984a 100%);
+    }
+  }
+
+  &.small {
+    min-width: 241px;
+    height: 70px;
+    font-size: 32px;
+    .bottomLayer {
+      top: 8px;
+    }
+  }
+
+  &.large {
+    min-width: 347px;
+    height: 92px;
+
+    font-size: 40px;
+    font-weight: 500;
+    margin-bottom: 20px;
+    .bottomLayer {
+      top: 20px;
+    }
+    .topLayer,
+    .bottomLayer {
+      border-radius: 45px;
+    }
+  }
+}
+
+@keyframes largeTopTapping {
+  50% {
+    transform: translateY(0);
+  }
+
+  80%,
+  to {
+    transform: translateY(10%);
+  }
+}
+@keyframes largeBottomTapping {
+  50% {
+    transform: translateY(0);
+  }
+  80%,
+  to {
+    transform: translateY(2%);
+  }
+}
