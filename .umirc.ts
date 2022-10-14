@@ -10,4 +10,7 @@ export default defineConfig({
   outputPath: 'docs-dist',
   base: '/rc-tricks/',
   publicPath: '/rc-tricks/',
+
+  // 加快启动时间， 参考：https://github.com/umijs/umi/issues/6766
+  mfsu: {},
 });
