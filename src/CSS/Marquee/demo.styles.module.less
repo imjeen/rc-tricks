@@ -1,0 +1,47 @@
+.marqueeDemo {
+  * {
+    box-sizing: border-box;
+  }
+
+  figure {
+    margin: 0;
+    line-height: 0;
+    width: 80px;
+    img {
+      width: 100%;
+    }
+  }
+
+  .marquee {
+    --gap: 0rem;
+    --duration: 16s;
+    position: relative;
+    display: flex;
+    overflow: hidden;
+    user-select: none;
+    gap: var(--gap);
+    .group {
+      flex-shrink: 0;
+      display: flex;
+      justify-content: space-around;
+      gap: var(--gap);
+      min-width: 100%;
+      margin: 0;
+
+      animation: scrolling var(--duration) linear infinite;
+    }
+
+    &.reversed .group {
+      animation-direction: reverse;
+    }
+  }
+}
+
+@keyframes scrolling {
+  from {
+    transform: translateX(0);
+  }
+  to {
+    transform: translateX(calc(-100% - var(--gap)));
+  }
+}

@@ -1,0 +1,59 @@
+.marqueeWrap {
+  * {
+    box-sizing: border-box;
+  }
+  ul,
+  li {
+    margin: 0;
+    padding: 0;
+    list-style: none;
+  }
+
+  // 调试的样式
+  .marquee {
+    padding: 10px;
+    li {
+      outline: 2px dashed gray;
+      padding: 5px 10px;
+      flex-grow: 1;
+      text-align: center;
+    }
+  }
+
+  &.debug {
+    .marquee {
+      .group[aria-hidden] {
+        background-color: aquamarine;
+      }
+    }
+  }
+
+  .marquee {
+    padding: 10px;
+    --gap: 0rem;
+    --duration: 10s;
+    position: relative;
+    display: flex;
+    overflow: hidden;
+    user-select: none;
+    gap: var(--gap);
+    .group {
+      flex-shrink: 0;
+      display: flex;
+      justify-content: space-around;
+      gap: var(--gap);
+      min-width: 100%;
+
+      animation: scrolling var(--duration) linear infinite;
+    }
+  }
+}
+
+@keyframes scrolling {
+  from {
+    transform: translateX(0);
+  }
+  to {
+    transform: translateX(calc(-100% - var(--gap)));
+  }
+}

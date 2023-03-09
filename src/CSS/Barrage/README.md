@@ -1,4 +1,6 @@
-# Barrage
+# ~Barrage~
+
+> (Depressed) 已废弃，见 Marquee 组件
 
 CSS 实现的简单弹幕
 

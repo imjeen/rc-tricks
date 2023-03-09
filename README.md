@@ -5,7 +5,7 @@
 ## DEV
 
 ```bash
-nvm use v16.15.0
+nvm use
 
 yarn start
 ```
